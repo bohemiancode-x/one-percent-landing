@@ -12,6 +12,7 @@ import FeatureItem from "@/components/feature-item"
 import Navbar from "@/components/navbar"
 import IconItem from "@/components/icon-item"
 import CaseStudies from "@/components/case-studies"
+import StackedScreenshots from "@/components/stacked-screenshots"
 
 export default function Home() {
   const featureListRef = useRef<HTMLDivElement>(null)
@@ -39,17 +40,21 @@ export default function Home() {
           <BackgroundGradient gradient="1" className="z-0" />
           <div className="container py-4 md:py-8 mx-auto px-4 relative z-10">
             <div className="flex flex-col items-center justify-center text-center">
+              <div className="w-full flex flex-col-reverse md:flex-col items-center">
+                  <div>
+                    <p className="bg-gradient-to-t from-white to-gray-500 bg-clip-text text-transparent mb-2 font-light text-lg">For high-value men with a purpose...</p>
                 
-                <p className="text-gray-300 mb-2">For high-value men with a purpose...</p>
-              
-              <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
-                50 MATCHES
-                <br />
-                GUARANTEED
-              </h1>
-              <p className="text-lg text-gray-300 mb-8">Build a top dating profile in less than 30 days</p>
-              <div className="w-full max-w-3xl h-64 md:h-80 bg-gray-800 rounded-lg mb-8 flex items-center justify-center">
-                <p className="text-gray-500">Video Placeholder</p>
+                    <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
+                      50 MATCHES
+                      <br />
+                      GUARANTEED
+                    </h1>
+                    <p className="text-lg text-white/70 mb-8 font-light">Build a top dating profile in less than 30 days</p>
+
+                  </div>
+                  <div className="w-full max-w-3xl h-64 md:h-80 bg-gray-800 rounded-lg mb-8 flex items-center justify-center">
+                    <p className="text-gray-500">Video Placeholder</p>
+                  </div>
               </div>
               <Button className="bg-[#5382E7] text-white px-8 py-6 text-lg rounded-md font-medium">
                 SEE IF YOU QUALIFY
@@ -154,7 +159,7 @@ export default function Home() {
               <IconItem imageSrc="/images/clock.png" name="Clock" />
 
               {/* Bottom Row */}
-              <IconItem imageSrc="/images/apple-tv.png" name="Apple TV" />
+              <IconItem imageSrc="/images/apple-tv.png" name="TV" />
               <div className="">
                 <Image
                   src="/images/1-percent.png"
@@ -190,7 +195,7 @@ export default function Home() {
             <BackgroundGradient gradient="4" className="z-0" />
             <div className="container mx-auto px-4 relative z-10">
               <div className="text-center mb-12">
-                <div className="inline-block px-6 py-2 border border-gray-700 rounded-full text-sm text-gray-300 mb-6">
+                <div className="inline-block px-6 py-2 border border-gray-700 rounded-full text-xl text-gray-300 mb-6">
                   The Triple Threat
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-12">
@@ -203,6 +208,9 @@ export default function Home() {
               <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto relative">
                 <ScrollIndicator featureListRef={featureListRef} />
                 <div className="space-y-12 ml-10 md:ml-0" ref={featureListRef}>
+                  <div className="aspect-video md:h-0 bg-gray-800 rounded-lg mb-8 flex md:hidden items-center justify-center">
+                    <p className="text-gray-500">Video Placeholder</p>
+                  </div>
                   {/* Image Studio */}
                   <div>
                     <h3 className="flex items-center text-xl font-semibold mb-6">
@@ -227,6 +235,9 @@ export default function Home() {
                   </div>
 
                   {/* Network with the Best */}
+                  <div className="aspect-video md:h-0 bg-gray-800 rounded-lg mb-8 flex md:hidden items-center justify-center">
+                    <p className="text-gray-500">Video Placeholder</p>
+                  </div>
                   <div>
                     <h3 className="flex items-center text-xl font-semibold mb-6">
                     <span className="mr-2 text-2xl">
@@ -251,6 +262,9 @@ export default function Home() {
                   </div>
 
                   {/* 50 Matches Guaranteed */}
+                  <div className="aspect-video md:h-0 bg-gray-800 rounded-lg mb-8 flex md:hidden items-center justify-center">
+                    <p className="text-gray-500">Video Placeholder</p>
+                  </div>
                   <div>
                     <h3 className="flex items-center text-xl font-semibold mb-6">
                     <span className="mr-2 text-2xl">
@@ -275,11 +289,11 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="flex items-center justify-center">
+                <div className="hidden md:flex items-center justify-center">
                   <div className="relative">
                     {/* Phone mockups */}
                     <div className="relative">
-                      <div className="md:ml-[15%]">
+                      <div className="md:ml-[18%] w-full">
                         <Image
                             src="/images/toolbox-phones.png"
                             alt="App Screenshot - Review Images"
@@ -308,7 +322,7 @@ export default function Home() {
             <BackgroundGradient gradient="5" className="z-0" />
             <div className="container mx-auto px-4 relative z-10">
               <div className="text-center mb-12">
-                <div className="inline-block px-6 py-2 border border-gray-700 rounded-full text-sm text-gray-300 mb-6">
+                <div className="inline-block px-6 py-2 border border-gray-700 rounded-full text-xl text-gray-300 mb-6">
                   Profile Makeover
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold">
@@ -318,39 +332,10 @@ export default function Home() {
                 </h2>
               </div>
 
-              <div className="flex flex-wrap md:flex-row items-center justify-center mx-auto gap-6 mb-12">
-                <div className="relative">
-                  <Image
-                    src="/images/iphone-1.png"
-                    alt="App Screenshot 1"
-                    width={0}
-                    height={0}
-                    
-                    className="object-contain w-60"
-                  />
-                </div>
-                <div className="relative scale-110">
-                  <Image
-                    src="/images/iphone-2.png"
-                    alt="App Screenshot 1"
-                    width={0}
-                    height={0}
-                    className="object-contain w-60"
-                  />
-                </div>
-                <div className="relative">
-                  <Image
-                    src="/images/iphone-3.png"
-                    alt="App Screenshot 1"
-                    width={0}
-                    height={0}
-                    className="object-contain w-60"
-                  />
-                </div>
-              </div>
+              <StackedScreenshots />
 
               <div className="text-center max-w-2xl mx-auto">
-                <p className="text-gray-400 text-sm mb-8">
+                <p className="text-gray-400 text-lg mb-8">
                   With the help of AI and our own image editing software developed specifically for dating apps, all of
                   these photos were created by our image experts without the client ever leaving their home.
                 </p>
@@ -436,7 +421,7 @@ export default function Home() {
             {/* <BackgroundGradient gradient="2" className="z-0" /> */}
             <div className="container mx-auto px-4 relative z-10">
               <div className="text-center mb-12">
-                <div className="inline-block px-6 py-2 border border-gray-700 rounded-full text-sm text-gray-300 mb-6">
+                <div className="inline-block px-6 py-2 border border-gray-700 rounded-full text-xl text-gray-300 mb-6">
                   Case Studies
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold">1% SUCCESS STORIES</h2>
@@ -451,7 +436,7 @@ export default function Home() {
             {/* <BackgroundGradient gradient="5" className="z-0" /> */}
             <div className="container mx-auto px-4 relative z-10">
               <div className="text-center mb-12">
-                <div className="inline-block px-6 py-2 border border-gray-700 rounded-full text-sm text-gray-300 mb-6">
+                <div className="inline-block px-6 py-2 border border-gray-700 rounded-full text-xl text-gray-300 mb-6">
                   I Have Questions
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold">
@@ -569,10 +554,39 @@ export default function Home() {
                 </Accordion>
 
                 <div className="mt-12 text-center">
-                  <Button className=" text-white px-8 py-6 text-lg rounded-md font-medium w-full md:w-auto">
+                  <Button className=" text-white px-8 py-6 text-lg rounded-md font-medium w-full md:w-full">
                     SEE IF YOU QUALIFY
                   </Button>
-                  <p className="mt-4 text-sm text-gray-400">Access the top 1% of men</p>
+                  <p className="mt-4 w-fit flex items-center gap-2 text-center m-auto text-sm text-gray-400">
+                    <svg width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clipPath="url(#clip0_1_10648)">
+                        <g clipPath="url(#clip1_1_10648)">
+                        <g clipPath="url(#clip2_1_10648)">
+                        <path d="M18.0703 6.13828V8.65061L19.0573 8.00851L21.9572 6.12202L19.0573 5.49609L18.0703 6.13828Z" fill="white"/>
+                        <path d="M2.90379 10.0815L0.00390625 11.9679L9.74146 14.0698L14.3575 11.067V8.55469L9.74146 11.5575L2.90379 10.0815Z" fill="white"/>
+                        <path d="M14.2248 7.82259L4.65838 5.60938L0.00390625 8.6372L9.74146 10.739L14.2248 7.82259Z" fill="white"/>
+                        <path d="M21.959 2.79327L12.2215 0.691406L8.47266 3.1301L18.072 5.32179L21.959 2.79327Z" fill="white"/>
+                        <path d="M2.90379 13.4137L0.00390625 15.3001L9.74146 17.4019L14.3575 14.399V11.8867L9.74146 14.8895L2.90379 13.4137Z" fill="white"/>
+                        <path d="M18.0703 9.47031V11.9827L21.9572 9.45412L19.0572 8.82812L18.0703 9.47031Z" fill="white"/>
+                        <path d="M18.0703 12.9195V15.4318L21.9572 12.9033L19.0572 12.2773L18.0703 12.9195Z" fill="white"/>
+                        <path d="M2.90379 16.8628L0.00390625 18.7492L9.74146 20.8511L14.3575 17.8483V15.3359L9.74146 18.3388L2.90379 16.8628Z" fill="white"/>
+                        </g>
+                        </g>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_1_10648">
+                        <rect width="22" height="20.16" fill="white" transform="translate(0 0.691406)"/>
+                        </clipPath>
+                        <clipPath id="clip1_1_10648">
+                        <rect width="22" height="20.16" fill="white" transform="translate(0 0.691406)"/>
+                        </clipPath>
+                        <clipPath id="clip2_1_10648">
+                        <rect width="21.9927" height="20.16" fill="white" transform="translate(0.00390625 0.691406)"/>
+                        </clipPath>
+                        </defs>
+                      </svg>
+
+                    <span className="text-white font-semibold">Access the top 1% of men</span></p>
                 </div>
               </div>
             </div>

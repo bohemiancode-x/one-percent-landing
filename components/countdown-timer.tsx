@@ -43,7 +43,7 @@ export default function CountdownTimer() {
   }, [])
 
   return (
-    <div className="flex items-center md:justify-between w-full max-w-6xl mx-auto">
+    <div className="flex text-center justify-center items-center md:justify-between w-full max-w-6xl mx-auto">
       <div className="text-sm hidden md:block md:text-base font-semibold">SPOTS FOR THE 1% CLOSES IN</div>
       <div className="text-sm md:hidden md:text-base font-semibold mx-3">SPOTS CLOSE IN</div>
       <div className="flex items-center space-x-2 md:space-x-4">

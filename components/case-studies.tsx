@@ -57,7 +57,7 @@ const CaseStudies = () => {
             ))}
         </div>
         <div className="md:hidden">
-            <Slider {...settings}>
+            <Slider arrows={false} {...settings}>
             {caseStudies.map((study, index) => (
                 <CaseStudyCard key={index} {...study} />
             ))}
