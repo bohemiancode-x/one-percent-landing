@@ -5,7 +5,7 @@ import {
   CarouselItem,
 } from '@/components/ui/carousel'
 import { cn } from '@/lib/utils'
-import { CaseStudy } from './CaseStudy'
+import { CaseStudy } from '../case-study'
 
 const CaseStudiesData = [
   {
