@@ -7,35 +7,35 @@ const StackedScreenshots = () => {
       {/* Mobile layout (stacked) */}
       <div className="md:hidden relative w-full max-w-sm mx-auto pb-4">
         {/* Third screenshot (bottom) */}
-        <div className="relative w-64 z-10 mx-auto">
+        <div className="relative z-10 mx-auto">
           <Image 
             src="/images/iphone-1.png" 
             alt="iPhone screenshot of dating app" 
             width={0}
             height={512}
-            className="w-full"
+            className="w-full h-auto"
           />
         </div>
         
         {/* Second screenshot (middle) */}
-        <div className="relative z-20 mx-auto w-64 -mt-40">
+        <div className="relative z-20 mx-auto -mt-[20rem]">
           <Image 
             src="/images/iphone-2.png" 
             alt="iPhone screenshot of dating app" 
-            width={256}
+            width={0}
             height={512}
-            className="w-full"
+            className="w-full h-auto"
           />
         </div>
         
         {/* First screenshot (top) */}
-        <div className="relative z-30 mx-auto w-64 -mt-40">
+        <div className="relative z-30 mx-auto -mt-[20rem]">
           <Image 
             src="/images/iphone-3.png" 
             alt="iPhone screenshot of dating app" 
-            width={256}
+            width={0}
             height={512}
-            className="w-full"
+            className="w-full h-auto"
           />
         </div>
       </div>

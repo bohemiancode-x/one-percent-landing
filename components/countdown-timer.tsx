@@ -43,26 +43,29 @@ export default function CountdownTimer() {
   }, [])
 
   return (
-    <div className="flex text-center justify-center items-center md:justify-between w-full max-w-6xl mx-auto">
-      <div className="text-sm hidden md:block md:text-base font-semibold">SPOTS FOR THE 1% CLOSES IN</div>
+    <div className="flex text-center items-center justify-center md:gap-4 w-full max-w-6xl mx-auto">
+      <div className="text-sm hidden md:block md:text-base font-medium">SPOTS FOR THE 1% CLOSES IN</div>
       <div className="text-sm md:hidden md:text-base font-semibold mx-3">SPOTS CLOSE IN</div>
       <div className="flex items-center space-x-2 md:space-x-4">
         <div className="flex items-center">
           <div className="px-1 py-1 text-sm md:text-base font-bold">{timeLeft.days}</div>
           <span className="text-xs opacity-50">D</span>
         </div>
+        <span>:</span>
         <div className="flex items-center">
           <div className=" px-1 py-1 text-sm md:text-base font-bold">
             {timeLeft.hours}
           </div>
           <span className="text-xs opacity-50">H</span>
         </div>
+        <span>:</span>
         <div className="flex items-center">
           <div className="px-1 py-1 text-sm md:text-base font-bold">
             {timeLeft.minutes}
           </div>
           <span className="text-xs ml-0 opacity-50">M</span>
         </div>
+        <span>:</span>
         <div className="flex items-center">
           <div className=" px-1 py-1 text-sm md:text-base font-bold">
             {timeLeft.seconds}

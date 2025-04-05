@@ -17,10 +17,13 @@ export default function ScrollIndicator({ featureListRef }: ScrollIndicatorProps
     const line = lineRef.current
     const gradient = gradientRef.current
 
-    if (!indicator || !line || !gradient || !featureListRef?.current) return
+    if (!indicator || !line || !gradient) return
 
     const handleScroll = () => {
-      const featureListRect = featureListRef.current!.getBoundingClientRect()
+      // Check if featureListRef is available and has a current value
+      if (!featureListRef?.current) return
+      
+      const featureListRect = featureListRef.current.getBoundingClientRect()
       const featureListTop = featureListRect.top
       const featureListHeight = featureListRect.height
       const windowHeight = window.innerHeight
@@ -44,30 +47,45 @@ export default function ScrollIndicator({ featureListRef }: ScrollIndicatorProps
       // Update the indicator position based on scroll percentage
       indicator.style.top = `${scrollPercentage * 100}%`
       
-      // Adjust gradient opacity based on scroll position to create fading effect
-      // As we scroll down, we fade the bottom part of the line
+      // Create a gradient that fades in around the indicator and fades out elsewhere
+      // This creates a "spotlight" effect that follows the indicator
+      const fadeRange = 30 // Percentage range for fade (adjust as needed)
+      const fadeStart = Math.max(0, scrollPercentage * 100 - fadeRange)
+      const fadeMiddleStart = Math.max(0, scrollPercentage * 100 - fadeRange/2)
+      const fadeMiddleEnd = Math.min(100, scrollPercentage * 100 + fadeRange/2)
+      const fadeEnd = Math.min(100, scrollPercentage * 100 + fadeRange)
+      
       gradient.style.background = `linear-gradient(to bottom, 
-        rgba(255, 255, 255, 0.2) 0%, 
-        rgba(255, 255, 255, 0.2) ${scrollPercentage * 100}%, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0) ${fadeStart}%, 
+        rgba(255, 255, 255, 0.2) ${fadeMiddleStart}%, 
+        rgba(255, 255, 255, 0.2) ${fadeMiddleEnd}%, 
+        rgba(255, 255, 255, 0) ${fadeEnd}%, 
         rgba(255, 255, 255, 0) 100%)`
     }
 
-    window.addEventListener("scroll", handleScroll)
-    handleScroll() // Initialize on mount
+    // Create a small delay before attaching the scroll event
+    const timeoutId = setTimeout(() => {
+      if (featureListRef?.current) {
+        window.addEventListener("scroll", handleScroll)
+        handleScroll() // Initialize on mount
+      }
+    }, 100)
 
     return () => {
+      clearTimeout(timeoutId)
       window.removeEventListener("scroll", handleScroll)
     }
   }, [featureListRef])
 
   return (
-    <div className="absolute left-4 md:left-auto md:right-1/2 md:translate-x-16 top-0 h-full pointer-events-none">
+    <div className="absolute left-0 md:left-auto md:right-0 h-full pointer-events-none">
       <div ref={lineRef} className="relative h-full w-0.5">
-        {/* Single line with dynamic gradient fade */}
+        {/* Line with dynamic gradient fade that follows the indicator */}
         <div 
           ref={gradientRef} 
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%)' }}
+          style={{ background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%)' }}
         ></div>
         
         {/* Double-lined blue square indicator */}
@@ -77,11 +95,11 @@ export default function ScrollIndicator({ featureListRef }: ScrollIndicatorProps
           style={{ top: "0%" }}
         >
           {/* Outer square */}
-          <div className="absolute inset-0 border border-[#4169e1]"></div>
+          <div className="absolute inset-0 border border-[#5382E7]"></div>
           {/* Inner square (slightly smaller) */}
-          <div className="absolute inset-0.5 border border-[#4169e1]"></div>
+          <div className="absolute inset-0.5 border border-[#5382E7]"></div>
           {/* Fill color */}
-          <div className="absolute inset-1 bg-[#4169e1]"></div>
+          <div className="absolute inset-1 bg-[#5382E7]"></div>
         </div>
       </div>
     </div>

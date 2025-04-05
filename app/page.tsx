@@ -11,7 +11,7 @@ import ScrollIndicator from "@/components/scroll-indicator"
 import FeatureItem from "@/components/feature-item"
 import Navbar from "@/components/navbar"
 import IconItem from "@/components/icon-item"
-import CaseStudies from "@/components/case-studies"
+import { CaseStudies } from "@/components/CaseStudies"
 import StackedScreenshots from "@/components/stacked-screenshots"
 
 export default function Home() {
@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <>
       {/* Sticky Waitlist Timer */}
-      <div className="sticky top-0 z-50 w-full bg-[#5382E7] text-white py-2 px-4 flex items-center justify-center" style={{ minHeight: '50px' }}>
+      <div className="sticky top-0 z-50 w-full bg-[#5382E7] text-white py-1 md:py-2 px-4 flex items-center justify-center" style={{ minHeight: '30px' }}>
         <CountdownTimer />
       </div>
       <main className="min-h-screen text-white relative overflow-hidden">
@@ -37,14 +37,14 @@ export default function Home() {
           }}
         >
           <Navbar />
-          <BackgroundGradient gradient="1" className="z-0" />
+          <BackgroundGradient gradient="1" className="z-0 hidden md:block" />
           <div className="container py-4 md:py-8 mx-auto px-4 relative z-10">
             <div className="flex flex-col items-center justify-center text-center">
               <div className="w-full flex flex-col-reverse md:flex-col items-center">
                   <div>
-                    <p className="bg-gradient-to-t from-white to-gray-500 bg-clip-text text-transparent mb-2 font-light text-lg">For high-value men with a purpose...</p>
+                    <p className="bg-gradient-to-t from-white to-gray-500 bg-clip-text text-transparent mb-2 font-light text-xl md:text-2xl">For high-value men with a purpose...</p>
                 
-                    <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
+                    <h1 className="text-6xl md:text-8xl font-bold mb-4 tracking-tight">
                       50 MATCHES
                       <br />
                       GUARANTEED
@@ -194,7 +194,7 @@ export default function Home() {
             
             <BackgroundGradient gradient="4" className="z-0" />
             <div className="container mx-auto px-4 relative z-10">
-              <div className="text-center mb-12">
+              <div className="text-center mb-16">
                 <div className="inline-block px-6 py-2 border border-gray-700 rounded-full text-xl text-gray-300 mb-6">
                   The Triple Threat
                 </div>
@@ -205,109 +205,121 @@ export default function Home() {
                 </h2>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto relative">
-                <ScrollIndicator featureListRef={featureListRef} />
-                <div className="space-y-12 ml-10 md:ml-0" ref={featureListRef}>
-                  <div className="aspect-video md:h-0 bg-gray-800 rounded-lg mb-8 flex md:hidden items-center justify-center">
-                    <p className="text-gray-500">Video Placeholder</p>
+              <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto relative md:px-8" ref={featureListRef}>
+                <div className="relative" ref={featureListRef}>
+                  {/* Mobile placement - inside the feature list div */}
+                  <div className="md:hidden">
+                    <ScrollIndicator featureListRef={featureListRef} />
                   </div>
-                  {/* Image Studio */}
-                  <div>
-                    <h3 className="flex items-center text-xl font-semibold mb-6">
+                  
+                  
+                  <div className="flex flex-col gap-12 ml-4 md:ml-0 ">
+                    <div className="aspect-video md:h-0 bg-gray-800 rounded-lg mb-8 flex md:hidden items-center justify-center">
+                      <p className="text-gray-500">Video Placeholder</p>
+                    </div>
+                    {/* Image Studio */}
+                    <div>
+                      <h3 className="flex items-center text-xl font-semibold mb-6">
+                        <span className="mr-2 text-2xl">
+                          <Image
+                            src="/images/grad-cap.svg"
+                            alt="icon"
+                            width={0}
+                            height={0}
+                            className="object-contain w-full"
+                          />  
+                        </span> 
+                        <span className="bg-gradient-to-t from-white to-gray-500 bg-clip-text text-transparent">
+                          IMAGE STUDIO
+                        </span>
+                      </h3>
+                      <div className="space-y-4">
+                        <FeatureItem>Design images of you with our Image Experts</FeatureItem>
+                        <FeatureItem>Use images that are proven to work</FeatureItem>
+                        <FeatureItem>Passes Selfie Verification & Reverse Image Search</FeatureItem>
+                      </div>
+                    </div>
+
+                    {/* Network with the Best */}
+                    <div className="aspect-video md:h-0 bg-gray-800 rounded-lg mb-8 flex md:hidden items-center justify-center">
+                      <p className="text-gray-500">Video Placeholder</p>
+                    </div>
+                    <div>
+                      <h3 className="flex items-center text-xl font-semibold mb-6">
                       <span className="mr-2 text-2xl">
-                        <Image
-                          src="/images/grad-cap.svg"
-                          alt="icon"
-                          width={0}
-                          height={0}
-                          className="object-contain w-full"
-                        />  
-                      </span> 
-                      <span className="bg-gradient-to-t from-white to-gray-500 bg-clip-text text-transparent">
-                        IMAGE STUDIO
-                      </span>
-                    </h3>
-                    <div className="space-y-4">
-                      <FeatureItem>Design images of you with our Image Experts</FeatureItem>
-                      <FeatureItem>Use images that are proven to work</FeatureItem>
-                      <FeatureItem>Passes Selfie Verification & Reverse Image Search</FeatureItem>
+                          <Image
+                            src="/images/network.svg"
+                            alt="icon"
+                            width={0}
+                            height={0}
+                            className="object-contain w-full"
+                          />  
+                        </span> 
+                        <span className="bg-gradient-to-t from-white to-gray-500 bg-clip-text text-transparent">
+                        NETWORK WITH THE BEST
+                        </span>
+                        
+                      </h3>
+                      <div className="space-y-4">
+                        <FeatureItem>Network with successful men just like you</FeatureItem>
+                        <FeatureItem>Learn from men with successful dating lives</FeatureItem>
+                        <FeatureItem>Get exclusive advice average men don't have access to</FeatureItem>
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Network with the Best */}
-                  <div className="aspect-video md:h-0 bg-gray-800 rounded-lg mb-8 flex md:hidden items-center justify-center">
-                    <p className="text-gray-500">Video Placeholder</p>
-                  </div>
-                  <div>
-                    <h3 className="flex items-center text-xl font-semibold mb-6">
-                    <span className="mr-2 text-2xl">
-                        <Image
-                          src="/images/network.svg"
-                          alt="icon"
-                          width={0}
-                          height={0}
-                          className="object-contain w-full"
-                        />  
-                      </span> 
-                      <span className="bg-gradient-to-t from-white to-gray-500 bg-clip-text text-transparent">
-                      NETWORK WITH THE BEST
-                      </span>
-                      
-                    </h3>
-                    <div className="space-y-4">
-                      <FeatureItem>Network with successful men just like you</FeatureItem>
-                      <FeatureItem>Learn from men with successful dating lives</FeatureItem>
-                      <FeatureItem>Get exclusive advice average men don't have access to</FeatureItem>
+                    {/* 50 Matches Guaranteed */}
+                    <div className="aspect-video md:h-0 bg-gray-800 rounded-lg mb-8 flex md:hidden items-center justify-center">
+                      <p className="text-gray-500">Video Placeholder</p>
                     </div>
-                  </div>
-
-                  {/* 50 Matches Guaranteed */}
-                  <div className="aspect-video md:h-0 bg-gray-800 rounded-lg mb-8 flex md:hidden items-center justify-center">
-                    <p className="text-gray-500">Video Placeholder</p>
-                  </div>
-                  <div>
-                    <h3 className="flex items-center text-xl font-semibold mb-6">
-                    <span className="mr-2 text-2xl">
-                        <Image
-                          src="/images/multimillion.svg"
-                          alt="icon"
-                          width={0}
-                          height={0}
-                          className="object-contain w-full"
-                        />  
-                      </span>  
-                      <span className="bg-gradient-to-t from-white to-gray-500 bg-clip-text text-transparent">
-                      50 MATCHES GUARANTEED
-                      </span>
-                      
-                    </h3>
-                    <div className="space-y-4">
-                      <FeatureItem>Get photos recommended that actually work</FeatureItem>
-                      <FeatureItem>Get your money back if you don't get 50 matches</FeatureItem>
-                      <FeatureItem>Stop guessing and know exactly what to do</FeatureItem>
+                    <div>
+                      <h3 className="flex items-center text-xl font-semibold mb-6">
+                      <span className="mr-2 text-2xl">
+                          <Image
+                            src="/images/multimillion.svg"
+                            alt="icon"
+                            width={0}
+                            height={0}
+                            className="object-contain w-full"
+                          />  
+                        </span>  
+                        <span className="bg-gradient-to-t from-white to-gray-500 bg-clip-text text-transparent">
+                        50 MATCHES GUARANTEED
+                        </span>
+                        
+                      </h3>
+                      <div className="space-y-4">
+                        <FeatureItem>Get photos recommended that actually work</FeatureItem>
+                        <FeatureItem>Get your money back if you don't get 50 matches</FeatureItem>
+                        <FeatureItem>Stop guessing and know exactly what to do</FeatureItem>
+                      </div>
                     </div>
                   </div>
                 </div>
 
+                {/* Desktop placement - between the two columns */}
+                <div className="hidden md:block absolute right-1/2 h-full">
+                  <ScrollIndicator featureListRef={featureListRef} />
+                </div>
+
                 <div className="hidden md:flex items-center justify-center">
+                  {/* Phone mockups */}
                   <div className="relative">
-                    {/* Phone mockups */}
                     <div className="relative">
-                      <div className="md:ml-[18%] w-full">
+                      <div className="w-full">
                         <Image
-                            src="/images/toolbox-phones.png"
-                            alt="App Screenshot - Review Images"
-                            width={0}
-                            height={0}
-                            className="w-full"
-                          />
-                          
+                          src="/images/toolbox-phones.png"
+                          alt="App Screenshot - Review Images"
+                          width={0}
+                          height={0}
+                          className="w-full"
+                        />
                       </div>
-                      
                     </div>
                   </div>
                 </div>
               </div>
+
+      
 
               <div className="mt-16 text-center">
                 <Button className="text-white px-8 py-6 text-lg rounded-md font-medium">
@@ -346,7 +358,13 @@ export default function Home() {
           {/* Not Every Man Section */}
           <section className="py-16 md:py-24 relative">
             {/* <BackgroundGradient gradient="6" className="z-0" /> */}
-            <div className="absolute inset-0 w-full h-full z-10">
+            <div 
+              className="absolute inset-0 w-full h-full z-0 bg-transparent"
+              style={{ 
+                height: "15rem",
+                background: `linear-gradient(to bottom, rgb(0,0,0) 0%, rgba(0,0,0,0) 100%)` 
+              }} 
+            >
             <Image
               src="/images/dotted-bg.svg" 
               alt="Grid pattern background"
@@ -355,26 +373,36 @@ export default function Home() {
             />
           </div> 
             <div className="container mx-auto px-4 relative z-10">
-              <div className="grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-                <div className="space-y-6">
-                  <h2 className="text-4xl md:text-5xl font-bold">
+                <div className=" w-fit mx-auto px-6 py-2 border border-gray-700 rounded-full text-xl text-gray-300 mb-6">
+                   This might not be for you..
+                </div>
+                  <h2 className="text-4xl text-center md:hidden  md:text-5xl font-bold">
                     NOT EVERY MAN
                     <br />
                     CAN BE IN THE
                     <br />
                     TOP 1%
                   </h2>
-                  <p className="text-gray-300">1% doesn't just get you matches—we give you abundance.</p>
+              <div className="flex flex-col-reverse my-5  md:grid md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
+                <div className="space-y-6 text-center md:text-start">
+                <h2 className="text-4xl hidden md:block text-start  md:text-5xl font-bold">
+                    NOT EVERY MAN
+                    <br />
+                    CAN BE IN THE
+                    <br />
+                    TOP 1%
+                  </h2>
+                  <p className="text-gray-300">1% doesn't just get you matches, <span className="font-bold inline-block md:inline-flex">we give you abundance. </span></p>
                   <p className="text-gray-300">
-                    Dating 9's and 10's requires you to have the right mindset and confidence. And to get there, you need
-                    lots of beautiful leads filling your inbox every day.
+                    Dating 9's and 10's requires you to have the right mindset and confidence. And to get there, <span className="font-bold">you need
+                    lots of beautiful leads filling your inbox every day.</span> 
                   </p>
                   <p className="text-gray-300">
-                    Most men get 1/2 a match a day. You won't. With 1%, you're taking a strategic approach to online dating.
+                    <span className="font-bold">Most men get 1/2 a match a day. You won't.</span> With 1%, you're taking a strategic approach to online dating.
                     You'll have photos that get matches and send messages that get dates.
                   </p>
                   <p className="text-gray-300">
-                    1% members have their shit together. If you're broke, lazy and don't care about your appearance, you'll
+                    1% members <span className="font-bold">have their shit together. </span> If you're broke, lazy and don't care about your appearance, you'll
                     just be catfishing tons of women. Not everyone can be in the top 1%.
                   </p>
                   <div className="pt-4">
@@ -407,7 +435,7 @@ export default function Home() {
                 <h2 className="text-4xl md:text-5xl font-bold mb-12">
                   ARE YOU READY TO PUT YOUR
                   <br />
-                  DATING LIFE ON AUTO-PILOT
+                  DATING LIFE ON <br className="md:hidden"/>AUTO-PILOT
                 </h2>
                 <Button className="text-white px-8 py-6 text-lg rounded-md font-medium">
                   SEE IF YOU QUALIFY
